@@ -1,0 +1,29 @@
+import pandas as pd
+from pathlib import Path
+
+BASE = Path(__file__).resolve().parents[1]
+
+input_path = BASE / "data" / "raw" / "fuel_pathway_inputs.csv"
+output_path = BASE / "data" / "processed" / "ci_results.csv"
+
+df = pd.read_csv(input_path)
+
+emission_cols = [
+    "feedstock_emissions",
+    "process_energy_emissions",
+    "transport_emissions",
+    "coproduct_credit",
+    "avoided_methane_credit",
+]
+
+df["total_lifecycle_emissions_gCO2e"] = df[emission_cols].sum(axis=1)
+df["ci_gCO2e_per_MJ"] = df["total_lifecycle_emissions_gCO2e"] / df["fuel_output_MJ"]
+
+df["risk_flag"] = df["ci_gCO2e_per_MJ"].apply(
+    lambda x: "Review - negative CI, verify avoided emissions" if x < 0 else "Pass - screening estimate"
+)
+
+output_path.parent.mkdir(parents=True, exist_ok=True)
+df.to_csv(output_path, index=False)
+
+print(df[["pathway", "market", "ci_gCO2e_per_MJ", "risk_flag"]])

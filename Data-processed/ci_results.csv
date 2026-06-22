@@ -1,0 +1,4 @@
+pathway,fuel_type,feedstock,market,fuel_output_mj,feedstock_emissions,process_energy_emissions,transport_emissions,coproduct_credit,avoided_methane_credit,qa_status,total_lifecycle_emissions_gco2e,ci_gco2e_per_mj,risk_flag
+corn_ethanol_midwest,ethanol,corn,LCFS,1000000,42000000,18000000,3000000,-8000000,0,Pass,55000000,55.0,Pass - screening estimate
+renewable_diesel_uco,renewable diesel,used cooking oil,LCFS/RED,1000000,12000000,10000000,3000000,-2000000,0,Pass,23000000,23.0,Pass - screening estimate
+dairy_manure_rng,RNG,dairy manure,LCFS/CFR,1000000,8000000,7000000,2000000,0,-90000000,Pass,-73000000,-73.0,"Review - negative CI, verify avoided methane credit"

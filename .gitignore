@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Local system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+
+# Excel lock files
+~$*.xlsx
+
+# Optional: keep raw data private if needed
+# Data-raw/
