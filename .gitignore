@@ -16,3 +16,4 @@ Thumbs.db
 
 # Optional: keep raw data private if needed
 # Data-raw/
+.idea/
